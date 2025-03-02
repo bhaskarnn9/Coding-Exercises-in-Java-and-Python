@@ -40,26 +40,16 @@ Constraints:
 nums is sorted in non-decreasing order.
 """
 
-from typing import List
+def removeDuplicates(nums):
+    if len(nums) == 0:
+        return 0
+    left = 1
+    for right in range(1, len(nums)):
+        if nums[right] != nums[right -1]:
+            nums[left] = nums[right]
+            left += 1
 
-class Solution:
-    def removeDuplicates(self, nums: List[int]) -> int:
-        seen = set()
-        for i, num in enumerate(nums):
-            if num not in seen:
-                seen.add(num)
-                self.helper(i, nums)
+    print(left)
+    return left
 
-    def helper(self, i: int, nums: List[int]) -> List[int]:
-        count = 0
-        seen = dict()
-        curr_num = nums[i]
-        seen[curr_num] = 1
-        # look from next index
-        for j, num in enumerate(nums, start=i+1):
-            pass
-
-
-
-
-
+removeDuplicates([0,0,1,1,1,2,2,3,3,4])
